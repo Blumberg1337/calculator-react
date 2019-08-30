@@ -4,12 +4,12 @@ import {Display} from "./Display";
 import {InputField} from "./InputField";
 
 export const Calculator = () => {
-    let numberOneAsString = useRef("");
-    let numberTwoAsString = useRef("");
-    let operator = useRef('');
-    let tempEqualSignPosition = useRef(-1);
-    let tempOperatorPosition = useRef(-1);
-    let willRerender = useRef(false);
+    const numberOneAsString = useRef("");
+    const numberTwoAsString = useRef("");
+    const operator = useRef('');
+    const tempEqualSignPosition = useRef(-1);
+    const tempOperatorPosition = useRef(-1);
+    const willRerender = useRef(false);
 
     const focus = useCallback(node => {
         node.focus();
@@ -68,7 +68,7 @@ export const Calculator = () => {
                     operator.current = '';
                 }
 
-                if (willRerender.current) {
+                // if (willRerender.current) {
                     switch (operator.current) {
                         case '/':
                             setResult(numberOne / numberTwo);
@@ -89,7 +89,7 @@ export const Calculator = () => {
                             break;
                     }
                     willRerender.current = false;
-                }
+                // }
                 console.log("operator: " + operator.current);
                 // console.log("equalSignPos: " + tempEqualSignPosition.current);
                 break;
@@ -115,15 +115,12 @@ export const Calculator = () => {
             case '8':
             case '9':
             case '.':
-                if (input.slice(-2) === "F") {
-                    break;
-                }
                 if (/\d/.test(input.slice(-1))) {
                     numberTwoAsString.current = "null";
                 }
-                if (!willRerender.current) {
-                    willRerender.current = true;
-                }
+                // if (!willRerender.current) {
+                //     willRerender.current = true;
+                // }
                 break;
             default:
                 break;
@@ -133,13 +130,13 @@ export const Calculator = () => {
 
     return (
         <div className="Calculator" ref={focus} tabIndex="0" onKeyUp={e => {
-            if (e.key.match(/[0-9./*+=-]/) && (e.keyCode < 112 || e.keyCode > 123)) {
+            if (e.key.match(/^[0-9./*+=-]$/)) {
                 setInput(input + e.key)
-            } else if (e.key.match("Enter")) {
+            } else if (e.key === "Enter") {
                 setInput(input + "=");
-            } else if (e.key.match("Escape")) {
+            } else if (e.key === "Escape") {
                 setInput(input + "C");
-            } else if (e.key.match(",")) {
+            } else if (e.key === ",") {
                 setInput(input + ".");
             }
         }}>

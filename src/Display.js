@@ -3,8 +3,8 @@ import './Display.css';
 
 export const Display = (props) => {
 
-    let tempOutputRef = useRef(props.output);
-    const [output, setOutput] = useState(""); // 22. Zeichen
+    const tempOutputRef = useRef(props.output);
+    const [output, setOutput] = useState("");
     const [result, setResult] = useState(0);
     // console.log("output ref: " + tempOutputRef.current);
     // console.log("output props: " + props.output);
