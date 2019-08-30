@@ -1,0 +1,32 @@
+.Display {
+    width: auto;
+    border: 1px solid black;
+    padding: 10px;
+    min-height: 40px;
+
+    overflow: hidden;
+
+    background-color: black;
+
+    text-align: end;
+    color: white;
+    font-weight: 900;
+    font-size: 32px;
+}
+
+.DisplayOperations {
+    width: auto;
+    border-top: 1px solid white;
+    padding: 5px;
+    min-height: 20px;
+
+    overflow-x: hidden;
+
+    background-color: black;
+
+    text-align: end;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+
+}
