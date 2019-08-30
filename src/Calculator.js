@@ -133,7 +133,7 @@ export const Calculator = () => {
 
     return (
         <div className="Calculator" ref={focus} tabIndex="0" onKeyUp={e => {
-            if (e.key.match(/[0-9./*+=-]/) && e.keyCode < 112 && e.keyCode > 123) {
+            if (e.key.match(/[0-9./*+=-]/) && (e.keyCode < 112 || e.keyCode > 123)) {
                 setInput(input + e.key)
             } else if (e.key.match("Enter")) {
                 setInput(input + "=");
