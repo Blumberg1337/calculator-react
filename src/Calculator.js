@@ -115,6 +115,9 @@ export const Calculator = () => {
             case '8':
             case '9':
             case '.':
+                if (input.slice(-2) === "F") {
+                    break;
+                }
                 if (/\d/.test(input.slice(-1))) {
                     numberTwoAsString.current = "null";
                 }
@@ -130,7 +133,7 @@ export const Calculator = () => {
 
     return (
         <div className="Calculator" ref={focus} tabIndex="0" onKeyUp={e => {
-            if (e.key.match(/[0-9./*+=-]/)) {
+            if (e.key.match(/[0-9./*+=-]/) && e.keyCode < 112 && e.keyCode > 123) {
                 setInput(input + e.key)
             } else if (e.key.match("Enter")) {
                 setInput(input + "=");
