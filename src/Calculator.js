@@ -7,7 +7,6 @@ export const Calculator = () => {
     const numberOneAsString = useRef("");
     const numberTwoAsString = useRef("");
     const operator = useRef('');
-    // const willRerender = useRef(false);
 
     const focus = useCallback(node => {
         node.focus();
@@ -94,18 +93,20 @@ export const Calculator = () => {
     }, [input]);
     // End of Calculation with onClick-Events
 
+    const handleKeyInput = e => {
+        if (e.key.match(/^[0-9./*+=-]$/)) {
+            setInput(input + e.key)
+        } else if (e.key === "Enter") {
+            setInput(input + "=");
+        } else if (e.key === "Escape") {
+            setInput(input + "C");
+        } else if (e.key === ",") {
+            setInput(input + ".");
+        }
+    };
+
     return (
-        <div className="Calculator" ref={focus} tabIndex="0" onKeyUp={e => {
-            if (e.key.match(/^[0-9./*+=-]$/)) {
-                setInput(input + e.key)
-            } else if (e.key === "Enter") {
-                setInput(input + "=");
-            } else if (e.key === "Escape") {
-                setInput(input + "C");
-            } else if (e.key === ",") {
-                setInput(input + ".");
-            }
-        }}>
+        <div className="Calculator" ref={focus} tabIndex="0" onKeyUp={handleKeyInput}>
             <Display result={result} output={input}/>
             <InputField callback={updateInput}/>
         </div>
