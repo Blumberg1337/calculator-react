@@ -2,8 +2,8 @@ import React, {useState, useRef, useEffect} from 'react';
 import './Display.css';
 
 export const Display = (props) => {
-
     let tempOutputRef = useRef(props.output);
+
     const [output, setOutput] = useState(""); // 22. Zeichen
     const [result, setResult] = useState(0);
     // console.log("output ref: " + tempOutputRef.current);

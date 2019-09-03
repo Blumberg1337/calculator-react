@@ -7,8 +7,6 @@ export const Calculator = () => {
     let numberOneAsString = useRef("");
     let numberTwoAsString = useRef("");
     let operator = useRef('');
-    let tempEqualSignPosition = useRef(-1);
-    let tempOperatorPosition = useRef(-1);
     let willRerender = useRef(false);
 
     const focus = useCallback(node => {
@@ -31,44 +29,34 @@ export const Calculator = () => {
             case '+':
             case '-':
                 operator.current = input.slice(-1);
-                tempOperatorPosition.current = input.length - 1;
                 // console.log("operatorPos: " + tempOperatorPosition.current);
                 // console.log("equalSignPos at n1: " + tempEqualSignPosition.current);
+
+                numberOneAsString.current = input.replace(/[C/*+=-]+/, "");
+                numberOneAsString.current = numberOneAsString.current.replace(/[.][.]+/, ".");
+                setInput("");
+                // console.log("numberOneAsString: " + numberOneAsString.current);
 
                 break;
             case '=':
                 // console.log("input: " + input);
-                let previousEqualSignPosition = tempEqualSignPosition.current;
-                tempEqualSignPosition.current = input.length - 1;
                 // console.log("n2str: " + numberTwoAsString.current);
 
-                numberOneAsString.current = input.slice(previousEqualSignPosition + 1, tempEqualSignPosition.current).match(/[/*+=-]/) !== null
-                    ? input.slice(previousEqualSignPosition + 1, tempOperatorPosition.current)
-                    : input.slice(previousEqualSignPosition + 1, tempEqualSignPosition.current);
-                // numberOneAsString.current = input.slice(previousEqualSignPosition + 1, tempOperatorPosition.current);
-                // console.log("numberOneAsString: " + numberOneAsString.current);
-
-                let numberOne = numberTwoAsString.current === "null" && numberOneAsString.current !== ""
-                    ? parseFloat(numberOneAsString.current.replace(/[C/*+=-]+/, ""))
+                let numberOne = numberOneAsString.current !== ""
+                    ? parseFloat(numberOneAsString.current)
                     : result;
                 console.log("numberOne: " + numberOne);
-                // console.log("equalSignPos at n2: " + tempEqualSignPosition.current);
-                // console.log("prevEqualSignPos at n2: " + previousEqualSignPosition);
 
-                numberTwoAsString.current = input.slice(previousEqualSignPosition + 1, tempEqualSignPosition.current).match(/[/*+=-]/) !== null
-                    ? input.slice(tempOperatorPosition.current + 1, tempEqualSignPosition.current)
-                    : "";
+                numberTwoAsString.current = input.replace(/[C/*+=-]+/, "");
+                numberTwoAsString.current = numberTwoAsString.current.replace(/[.][.]+/, ".");
+
                 // console.log("input at n2str: " + input);
                 // console.log("numberTwoAsString: " + numberTwoAsString.current);
 
-                let numberTwo = parseFloat(numberTwoAsString.current.replace(/[C/*+=-]+/, ""));
+                let numberTwo = parseFloat(numberTwoAsString.current);
                 console.log("numberTwo: " + numberTwo);
 
-                if (isNaN(numberTwo)) {
-                    operator.current = '';
-                }
-
-                if (willRerender.current) {
+                if (willRerender.current && !isNaN(numberTwo)) {
                     switch (operator.current) {
                         case '/':
                             setResult(numberOne / numberTwo);
@@ -84,23 +72,20 @@ export const Calculator = () => {
                             setResult(numberOne - numberTwo);
                             break;
                         default:
-                            setResult(numberOne);
+                            setResult(numberTwo);
                             console.log("Invalid Operator");
                             break;
                     }
                     willRerender.current = false;
                 }
                 console.log("operator: " + operator.current);
-                // console.log("equalSignPos: " + tempEqualSignPosition.current);
+                operator.current = '';
+                setInput("");
                 break;
             case 'C':
-                // if (/\d/.test(input)) {
                 operator.current = '';
-                tempOperatorPosition.current = -1;
-                tempEqualSignPosition.current = -1;
                 setResult(0);
                 setInput("");
-                // }
                 // console.log("result: " + result);
                 // console.log("input: " + input);
                 break;
@@ -115,12 +100,9 @@ export const Calculator = () => {
             case '8':
             case '9':
             case '.':
-                if (input.slice(-2) === "F") {
-                    break;
-                }
-                if (/\d/.test(input.slice(-1))) {
-                    numberTwoAsString.current = "null";
-                }
+                // if (/\d/.test(input.slice(-1))) {
+                //     numberTwoAsString.current = "null";
+                // }
                 if (!willRerender.current) {
                     willRerender.current = true;
                 }
