@@ -2,15 +2,8 @@ import React, {useState, useRef, useEffect} from 'react';
 import './Display.css';
 
 export const Display = (props) => {
-<<<<<<< HEAD
-    let tempOutputRef = useRef(props.output);
-
-    const [output, setOutput] = useState(""); // 22. Zeichen
-=======
-
     const tempOutputRef = useRef(props.output);
     const [output, setOutput] = useState("");
->>>>>>> 5559ac71e2310d76a9cb77beb44a9fafa97a5cd6
     const [result, setResult] = useState(0);
     // console.log("output ref: " + tempOutputRef.current);
     // console.log("output props: " + props.output);
