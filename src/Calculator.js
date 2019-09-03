@@ -7,7 +7,7 @@ export const Calculator = () => {
     const numberOneAsString = useRef("");
     const numberTwoAsString = useRef("");
     const operator = useRef('');
-    const willRerender = useRef(false);
+    // const willRerender = useRef(false);
 
     const focus = useCallback(node => {
         node.focus();
@@ -56,7 +56,7 @@ export const Calculator = () => {
                 let numberTwo = parseFloat(numberTwoAsString.current);
                 console.log("numberTwo: " + numberTwo);
 
-                if (willRerender.current && !isNaN(numberTwo)) {
+                if (!isNaN(numberTwo)) {
                     switch (operator.current) {
                         case '/':
                             setResult(numberOne / numberTwo);
@@ -76,7 +76,6 @@ export const Calculator = () => {
                             console.log("Invalid Operator");
                             break;
                     }
-                    willRerender.current = false;
                 }
                 console.log("operator: " + operator.current);
                 operator.current = '';
@@ -88,24 +87,6 @@ export const Calculator = () => {
                 setInput("");
                 // console.log("result: " + result);
                 // console.log("input: " + input);
-                break;
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-            case '.':
-                // if (/\d/.test(input.slice(-1))) {
-                //     numberTwoAsString.current = "null";
-                // }
-                if (!willRerender.current) {
-                    willRerender.current = true;
-                }
                 break;
             default:
                 break;
