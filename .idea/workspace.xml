@@ -5,10 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Calculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Display.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Display.js" afterDir="false" />
-<<<<<<< HEAD
-=======
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
->>>>>>> 5559ac71e2310d76a9cb77beb44a9fafa97a5cd6
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,11 +26,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-<<<<<<< HEAD
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Shop/libri_test_deployment" />
-=======
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
->>>>>>> 5559ac71e2310d76a9cb77beb44a9fafa97a5cd6
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -87,14 +80,9 @@
       <workItem from="1566900809947" duration="15631000" />
       <workItem from="1566978759301" duration="19503000" />
       <workItem from="1567065086469" duration="8580000" />
-<<<<<<< HEAD
-      <workItem from="1567158834001" duration="8094000" />
-      <workItem from="1567513275820" duration="3794000" />
-=======
       <workItem from="1567158834001" duration="7984000" />
       <workItem from="1567194619978" duration="5065000" />
       <workItem from="1567200054882" duration="251000" />
->>>>>>> 5559ac71e2310d76a9cb77beb44a9fafa97a5cd6
     </task>
     <servers />
   </component>
